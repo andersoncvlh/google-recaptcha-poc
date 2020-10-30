@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Recaptcha V3 Test</title>W
+</head>
+
+<body>
+
+	<button onclick="onClick()">Submit</button>
+
+	<script src="https://www.google.com/recaptcha/api.js?render={SITE_KEY}"></script>
+
+	<script>
+		function onClick() {
+			grecaptcha.ready(function () {
+				grecaptcha.execute('{SITE_KEY}', { action: 'submit' }).then(function (token) {
+					// Add your logic to submit to your backend server here.
+					siteVerifyCaptcha(token);
+				});
+			});
+		}
+
+		function siteVerifyCaptcha(token) {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("demo").innerHTML = this.responseText;
+				}
+			};
+
+			xhttp.open("POST", "http://127.0.0.1/recaptcha/v3/verify", true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+
+			xhttp.send("token=" + token);
+		}
+	</script>
+</body>
+
+</html>
