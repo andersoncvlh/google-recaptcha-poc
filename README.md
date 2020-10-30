@@ -7,7 +7,7 @@ No caso é utilizado essa aplicação `https://github.com/andersoncvlh/google-re
 2. Executar o servidor: `http-server ./ --port 8181`
 
 
-## Proxy 
+## Proxy [nginx]
 Aqui está um exemplo simples de uma configuração de proxy para que o front se comunique com o backend em um exemplo localhost. Utilizando nginx:
 ```
 //[...]
