@@ -5,7 +5,7 @@
 	<script type="text/javascript">
 		var onloadCallback = function () {
 			grecaptcha.render('html_element', {
-				'sitekey': '6LcTM90ZAAAAAIEuEmTGudm8pU7sWmJ2oMcAolss',
+				'sitekey': '{{SITE_KEY}}',
 				'callback': function (token) {
 					if (token) {
 						document.getElementById('btnSubmit').disabled = false;
